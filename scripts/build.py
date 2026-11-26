@@ -35,7 +35,7 @@ DATA = ROOT / "posts.json"
 PHOTOS = ROOT / "photos"
 SRGB = "/System/Library/ColorSync/Profiles/sRGB Profile.icc"
 
-SITE_URL = "https://afsanehs.github.io/"
+SITE_URL = "https://asamet.co/"
 BLOG_TITLE = "Afsaneh Samet"
 BLOG_DESC = "Photo blog"
 AVATAR = "assets/avatar.jpg"
