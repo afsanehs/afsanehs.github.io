@@ -52,7 +52,7 @@ a { color: inherit; }
   overflow: hidden;
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 4px;
   scroll-margin-top: 20px;
 }
 .post-head { padding: 14px 20px; }
