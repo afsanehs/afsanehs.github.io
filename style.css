@@ -55,10 +55,10 @@ a { color: inherit; }
   border-radius: 8px;
   scroll-margin-top: 20px;
 }
-.post-head { display: flex; align-items: center; gap: 12px; padding: 14px 20px; }
-.post-avatar img { display: block; width: 32px; height: 32px; border-radius: 3px; object-fit: cover; }
-.handle { color: var(--text); font-weight: 700; text-decoration: none; }
-.handle:hover { text-decoration: underline; }
+.post-head { padding: 14px 20px; }
+.post-location { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.35; }
+.post-location a { color: var(--text); text-decoration: none; }
+.post-location a:hover { text-decoration: underline; }
 .photoset { display: flex; flex-direction: column; gap: 4px; }
 .row { display: flex; gap: 4px; }
 .ph { position: relative; display: block; flex: 1 1 0; min-width: 0; background: var(--well); cursor: zoom-in; }
@@ -82,10 +82,11 @@ a { color: inherit; }
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  padding: 4px 20px 16px;
+  padding: 14px 20px 16px;
   color: var(--muted);
   font-size: 14px;
 }
+.post-body + .post-foot { padding-top: 4px; }
 .post-foot a { color: var(--muted); text-decoration: none; }
 .post-foot a:hover { color: var(--text); text-decoration: underline; }
 .post-foot .count { font-weight: 700; }

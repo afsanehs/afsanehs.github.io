@@ -5,13 +5,15 @@
     python3 scripts/build.py                        # re-render pages from posts.json only
 
 Each folder in the source becomes one post. Folder names look like
-"Boston (USA) - 2022" -> title "Boston", place "USA", year 2022. Exact dates come
+"Boston (USA) - 2022" -> title "Boston", location "Boston, USA", year 2022. Exact dates come
 from the photos themselves.
 
 Photos are rotated upright, converted to sRGB, resized, and stripped of ALL
 metadata (including GPS location) before they are written to photos/.
 
-To change a post's title, place or caption, edit posts.json and re-run.
+To change a post's title, location (shown at the top, e.g. "Boston, Massachusetts")
+or caption, edit posts.json and re-run. The title is only shown when it differs
+from the city in the location (e.g. "L'Aquarium de Paris").
 Re-importing keeps those edits; it only refreshes the photo list.
 
 Needs ImageMagick 7 (`magick`) with HEIC support.
@@ -36,7 +38,6 @@ SRGB = "/System/Library/ColorSync/Profiles/sRGB Profile.icc"
 SITE_URL = "https://afsanehs.github.io/"
 BLOG_TITLE = "Afsaneh Samet"
 BLOG_DESC = "Photo blog"
-BLOG_HANDLE = "asamet"
 AVATAR = "assets/avatar.jpg"
 
 IMAGE_EXT = {".jpg", ".jpeg", ".heic", ".heif", ".png"}
@@ -143,7 +144,8 @@ def import_source(src_dir, data):
             while slug in used_slugs:
                 slug, k = f"{base}-{k}", k + 1
             used_slugs.add(slug)
-            post = {"slug": slug, "source": folder.name, "title": title, "place": place,
+            post = {"slug": slug, "source": folder.name, "title": title,
+                    "location": f"{title}, {place}" if place else title,
                     "year": year, "caption": "",
                     "photos": []}
             data["posts"].append(post)
@@ -254,26 +256,27 @@ def render_photoset(post, eager):
 
 
 def render_post(post, eager):
-    start, end = post_dates(post)
+    start, _ = post_dates(post)
     n = len(post["photos"])
     slug = esc(post["slug"])
     when = fmt_range(start, start) if start else str(post.get("year") or "")  # start date only
     when = f'<a href="#{slug}"><time datetime="{start.isoformat()}">{when}</time></a>' if start else when
-    where = f"<b>{esc(pretty(post['title']))}</b>"
-    if post.get("place"):
-        where += f", {esc(pretty(post['place']))}"
-    caption = f'\n        <p class="caption">{esc(post["caption"])}</p>' if post.get("caption") else ""
-    place = f", {pretty(post['place'])}" if post.get("place") else ""
+    title = pretty(post["title"])
+    location = pretty(post.get("location") or post["title"])
+    city = location.split(",")[0].strip()
+    body = []
+    if title != city:  # e.g. a venue like "L'Aquarium de Paris"
+        body.append(f'<p class="where"><b>{esc(title)}</b></p>')
+    if post.get("caption"):
+        body.append(f'<p class="caption">{esc(post["caption"])}</p>')
+    body = ('\n      <div class="post-body">\n        ' + "\n        ".join(body) + "\n      </div>") if body else ""
+    label = location if title == city else f"{title}, {location}"
     return f"""
-    <article class="post" id="{slug}" data-label="{esc(pretty(post['title']) + place)}">
+    <article class="post" id="{slug}" data-label="{esc(label)}">
       <header class="post-head">
-        <a class="post-avatar" href="./" tabindex="-1" aria-hidden="true"><img src="{AVATAR}" alt="" width="32" height="32"></a>
-        <a class="handle" href="./">{esc(BLOG_HANDLE)}</a>
+        <h2 class="post-location"><a href="#{slug}">{esc(location)}</a></h2>
       </header>
-      {render_photoset(post, eager)}
-      <div class="post-body">
-        <p class="where">{where}</p>{caption}
-      </div>
+      {render_photoset(post, eager)}{body}
       <footer class="post-foot">
         <span>{when}</span>
         <span class="count">{n} photo{'s' if n != 1 else ''}</span>

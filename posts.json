@@ -4,7 +4,7 @@
       "slug": "austin-2022",
       "source": "Austin (USA) - 2022",
       "title": "Austin",
-      "place": "USA",
+      "location": "Austin, Texas",
       "year": 2022,
       "caption": "",
       "photos": [
@@ -184,7 +184,7 @@
       "slug": "boston-2022",
       "source": "Boston (UA) - 2022",
       "title": "Boston",
-      "place": "USA",
+      "location": "Boston, Massachusetts",
       "year": 2022,
       "caption": "",
       "photos": [
@@ -464,7 +464,7 @@
       "slug": "laquarium-de-paris-2019",
       "source": "L'Aquarium de Paris (France) - 2019",
       "title": "L'Aquarium de Paris",
-      "place": "France",
+      "location": "Paris, France",
       "year": 2019,
       "caption": "",
       "photos": [
@@ -664,7 +664,7 @@
       "slug": "laguna-beach-2025",
       "source": "Laguna Beach (California) - 2025",
       "title": "Laguna Beach",
-      "place": "California",
+      "location": "Laguna Beach, California",
       "year": 2025,
       "caption": "",
       "photos": [
@@ -754,7 +754,7 @@
       "slug": "nancy-2020",
       "source": "Nancy (France) - 2020",
       "title": "Nancy",
-      "place": "France",
+      "location": "Nancy, France",
       "year": 2020,
       "caption": "",
       "photos": [
@@ -814,7 +814,7 @@
       "slug": "parc-zoologique-de-paris-2019",
       "source": "Parc zoologique de Paris (France) - 2019",
       "title": "Parc zoologique de Paris",
-      "place": "France",
+      "location": "Paris, France",
       "year": 2019,
       "caption": "",
       "photos": [
@@ -894,7 +894,7 @@
       "slug": "philadelphia-2022",
       "source": "Philadelphia (USA) - 2022",
       "title": "Philadelphia",
-      "place": "USA",
+      "location": "Philadelphia, Pennsylvania",
       "year": 2022,
       "caption": "",
       "photos": [
@@ -1074,7 +1074,7 @@
       "slug": "paris-2021",
       "source": "Ragdoll (France) - 2021",
       "title": "Paris",
-      "place": "France",
+      "location": "Paris, France",
       "year": 2021,
       "caption": "",
       "photos": [
